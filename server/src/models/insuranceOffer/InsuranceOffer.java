@@ -1,7 +1,6 @@
 package models.insuranceOffer;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class InsuranceOffer implements IInsuranceOffer {
     private final long id;
@@ -10,12 +9,20 @@ public class InsuranceOffer implements IInsuranceOffer {
     private Float price;
     private final Timestamp insertTime;
 
-    public InsuranceOffer(long id, long vehicleId, String insurer, Float price) {
+    public InsuranceOffer(long vehicleId, String insurer, Float price) {
+        this.id = -1;
+        this.vehicleId = vehicleId;
+        this.insurer = insurer;
+        this.price = price;
+        this.insertTime = null;
+
+    }
+    public InsuranceOffer(long id, long vehicleId, String insurer, Float price, Timestamp insertTime) {
         this.id = id;
         this.vehicleId = vehicleId;
         this.insurer = insurer;
         this.price = price;
-        this.insertTime = new Timestamp(new Date().getTime());
+        this.insertTime = insertTime;
     }
 
     @Override

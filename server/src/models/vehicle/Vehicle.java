@@ -1,7 +1,6 @@
 package models.vehicle;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class Vehicle implements IVehicle {
     private final long id;
@@ -10,12 +9,20 @@ public class Vehicle implements IVehicle {
     private String model;
     private final Timestamp insertTime;
 
-    public Vehicle(long id, long userId, String brand, String model) {
+    public Vehicle(long userId, String brand, String model) {
+        this.id = -1;
+        this.userId = userId;
+        this.brand = brand;
+        this.model = model;
+        this.insertTime = null;
+    }
+
+    public Vehicle(long id, long userId, String brand, String model, Timestamp insertTime) {
         this.id = id;
         this.userId = userId;
         this.brand = brand;
         this.model = model;
-        this.insertTime = new Timestamp(new Date().getTime());
+        this.insertTime = insertTime;
     }
 
     @Override

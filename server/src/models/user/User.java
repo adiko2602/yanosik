@@ -1,7 +1,6 @@
 package models.user;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 public class User implements IUser {
     private final long id;
@@ -10,12 +9,20 @@ public class User implements IUser {
     private String password;
     private final Timestamp insertTime;
 
-    public User(long id, String nick, String login, String password) {
+    public User(String nick, String login, String password) {
+        this.id = -1;
+        this.nick = nick;
+        this.login = login;
+        this.password = password;
+        this.insertTime = null;
+    }
+
+    public User(long id, String nick, String login, String password, Timestamp insertTime) {
         this.id = id;
         this.nick = nick;
         this.login = login;
         this.password = password;
-        this.insertTime = new Timestamp(new Date().getTime());
+        this.insertTime = insertTime;
     }
 
     @Override
